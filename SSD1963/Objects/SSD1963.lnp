@@ -1,0 +1,19 @@
+--cpu Cortex-M4.fp
+".\objects\main.o"
+".\objects\misc.o"
+".\objects\stm32f4xx_fsmc.o"
+".\objects\stm32f4xx_gpio.o"
+".\objects\stm32f4xx_rcc.o"
+".\objects\stm32f4xx_tim.o"
+".\objects\fonts.o"
+".\objects\gpio.o"
+".\objects\interrupts.o"
+".\objects\primitives.o"
+".\objects\tft.o"
+".\objects\timers.o"
+".\objects\startup_stm32f407xx.o"
+".\objects\system_stm32f4xx.o"
+--strict --scatter ".\Objects\SSD1963.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\SSD1963.map" -o .\Objects\SSD1963.axf
