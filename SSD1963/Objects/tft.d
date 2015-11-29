@@ -38,3 +38,5 @@
 .\objects\tft.o: C:\Keil_v5\STM32F4xx_DSP_StdPeriph_Lib_V1.6.1\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\tft.o: C:\Keil_v5\STM32F4xx_DSP_StdPeriph_Lib_V1.6.1\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h
 .\objects\tft.o: .\headers\timers.h
+.\objects\tft.o: .\headers\primitives.h
+.\objects\tft.o: .\headers\fonts.h

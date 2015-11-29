@@ -38,8 +38,11 @@
 .\objects\main.o: C:\Keil_v5\STM32F4xx_DSP_StdPeriph_Lib_V1.6.1\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h
 .\objects\main.o: .\headers\timers.h
 .\objects\main.o: .\headers\interrupts.h
-.\objects\main.o: .\headers\tft.h
 .\objects\main.o: .\headers\primitives.h
+.\objects\main.o: .\headers\tft.h
 .\objects\main.o: .\headers\fonts.h
 .\objects\main.o: .\headers\variables.h
 .\objects\main.o: .\headers\images.h
+.\objects\main.o: .\headers\max11802.h
+.\objects\main.o: .\headers\windows.h
+.\objects\main.o: .\headers\dac.h

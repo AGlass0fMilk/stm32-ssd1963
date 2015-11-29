@@ -150,9 +150,8 @@ void TFT_Initialization(void)
 	TFT_FSMCConfig();
 	delay_1ms(100);
 	
-	//Display on + backlight power on
+	//Display on
 	SSD1963__set_display_on();
-	TFT_5V_Enable();
 	
 	//Set pixel data interface to 16-bit (565)
 	SSD1963__set_pixel_data_interface(0x03);
@@ -160,8 +159,14 @@ void TFT_Initialization(void)
 	//Set address mode
 	SSD1963__set_address_mode(0x02);
 	
+	//Backlight @ 0x00
+	SSD1963__set_pwm_conf(0x06,0x00,0x01,0xF0,0x00,0x00);
+	
+	//Backlight on
+	TFT_5V_Enable();
+	
 	//Brightness @ 100%
-	SSD1963__set_pwm_conf(0x06,0xD9,0x01,0xF0,0x00,0x00);
+	//SSD1963__set_pwm_conf(0x06,0xD9,0x01,0xF0,0x00,0x00);
 }
 
 
@@ -553,7 +558,7 @@ unsigned int SSD1963__get_pwm_conf(unsigned int p_n)
 	unsigned int r=0;
 	
 	//If incorrect parameter, return 0.
-	if(p_n<1 || p_n>7) return r;
+	if(p_n<1 || p_n>6) return r;
 	
 	TFT_REG=0xBF;
 	

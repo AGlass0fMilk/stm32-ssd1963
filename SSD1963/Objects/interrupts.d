@@ -37,3 +37,8 @@
 .\objects\interrupts.o: C:\Keil_v5\STM32F4xx_DSP_StdPeriph_Lib_V1.6.1\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h
 .\objects\interrupts.o: C:\Keil_v5\STM32F4xx_DSP_StdPeriph_Lib_V1.6.1\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\interrupts.o: C:\Keil_v5\STM32F4xx_DSP_StdPeriph_Lib_V1.6.1\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h
+.\objects\interrupts.o: .\headers\primitives.h
+.\objects\interrupts.o: .\headers\tft.h
+.\objects\interrupts.o: .\headers\gpio.h
+.\objects\interrupts.o: .\headers\timers.h
+.\objects\interrupts.o: .\headers\fonts.h

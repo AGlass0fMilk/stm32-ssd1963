@@ -39,3 +39,4 @@
 .\objects\primitives.o: C:\Keil_v5\STM32F4xx_DSP_StdPeriph_Lib_V1.6.1\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\primitives.o: C:\Keil_v5\STM32F4xx_DSP_StdPeriph_Lib_V1.6.1\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h
 .\objects\primitives.o: .\headers\timers.h
+.\objects\primitives.o: .\headers\fonts.h

@@ -18,16 +18,6 @@
 #include <tft.h>
 #endif
 
-#ifndef PRIMITIVES_H
-#define PRIMITIVES_H
-#include <primitives.h>
-#endif
-
-#ifndef FONTS_H
-#define FONTS_H
-#include <fonts.h>
-#endif
-
 #ifndef VARIABLES_H
 #define VARIABLES_H
 #include <variables.h>
@@ -38,21 +28,41 @@
 #include <images.h>
 #endif
 
+#ifndef MAX11802_H
+#define MAX11802_H
+#include <max11802.h>
+#endif
+
+#ifndef WINDOWS_H
+#define WINDOWS_H
+#include <windows.h>
+#endif
+
+#ifndef DAC_H
+#define DAC_H
+#include <dac.h>
+#endif
+
 
 int main(void) 
 {
 	GPIO_Initialization();
 	TIM3_Initialization();
-	
-	//Init TFT screen
 	TFT_Initialization();
+	MAX11802_Initialization();
+	DAC_Initialization();
 	
-	TFT_Fill_Screen(0x0000);
+	TFT_MAIN();
+	TFT_Backlight_FadeIn(10);
+	
+	DAC_SetChannel2Data(DAC_Align_12b_R, 0xFFFF);
+	
+	DAC_SetChannel2Data(DAC_Align_12b_R, 0x000F);
 
+	DAC_SetChannel2Data(DAC_Align_12b_R, 0x0FFF);			
+	
 	while(1) 
 	{
-		TFT_TextTest();
-		TFT_ColorTest(10);
-		TFT_ImageTest();
+		TP_PROCESS();
 	}
 }

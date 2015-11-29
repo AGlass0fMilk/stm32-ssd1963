@@ -17,6 +17,28 @@ void Set_Page(unsigned long SP, unsigned long EP)
 	SSD1963__set_page_address(SP>>8,SP & 0x00FF,EP>>8,EP & 0x00FF);
 }
 
+void TFT_Backlight_FadeIn(unsigned int delay_ms)
+{
+	unsigned int i;
+	
+	for(i=SSD1963__get_pwm_conf(2);i<0xFF;i++)
+	{
+		SSD1963__set_pwm_conf(0x06,i,0x01,0xF0,0x00,0x00);
+		delay_1ms(delay_ms);
+	}
+}
+
+void TFT_Backlight_FadeOut(unsigned int delay_ms)
+{
+	unsigned int i;
+	
+	for(i=SSD1963__get_pwm_conf(2);i>0x00;i--)
+	{
+		SSD1963__set_pwm_conf(0x06,i,0x01,0xF0,0x00,0x00);
+		delay_1ms(delay_ms);
+	}
+}
+
 /*Fill the entire screen with RGB color.*/
 //rgb     :   RGB color (565 format)
 void TFT_Fill_Screen(unsigned int rgb)
@@ -46,7 +68,7 @@ void TFT_Put_Pixel(unsigned int x_pos, unsigned int y_pos, unsigned int rgb)
 }
 
 
-void TFT_DrawRect(uint16_t Xpos, uint16_t Ypos, uint8_t Height, uint16_t Width, uint16_t rgb)
+void TFT_DrawRect(uint16_t Xpos, uint16_t Ypos, uint16_t Height, uint16_t Width, uint16_t rgb)
 {
  int x,y;
  x=0;
@@ -328,3 +350,37 @@ void TFT_ColorTest(uint16_t d)
 	}
 	rgb=0xF800;
 }
+
+void TFT_DrawCross(unsigned int x_pos, unsigned y_pos, unsigned int rgb)
+{
+	TFT_DrawUniLine(x_pos-10,y_pos,x_pos+10,y_pos,rgb);
+	TFT_DrawUniLine(x_pos,y_pos-10,x_pos,y_pos+10,rgb);
+}
+
+void TFT_DrawProgressBar(unsigned int x_pos, unsigned int y_pos, unsigned int x_len, unsigned int y_len, unsigned int d, unsigned int rgb, unsigned int rgb_bk)
+{
+	TFT_DrawRect(x_pos,y_pos,x_len,y_len,rgb);
+	TFT_DrawFullRect(x_pos+2,y_pos+2,x_len-3,y_len-3,rgb_bk);
+	TFT_DrawFullRect(x_pos+2,y_pos+2,(d*(x_len-3))/100,y_len-3,rgb);
+}
+
+
+void TFT_Update_CSV(unsigned int x_pos, unsigned int y_pos)
+{
+	//Update progress bars
+	TFT_Put_String(x_pos,y_pos,"VS_1 = ",15,classicConsole_16ptDescriptors,classicConsole_16ptBitmaps,3,1,0xFFFF);
+	TFT_DrawProgressBar(x_pos,y_pos+15,200,20,20,0xFFFF,0x1107);
+	
+	TFT_Put_String(x_pos,y_pos+50,"VS_2 = ",15,classicConsole_16ptDescriptors,classicConsole_16ptBitmaps,3,1,0xFFFF);
+	TFT_DrawProgressBar(x_pos,y_pos+50+15,200,20,30,0xFFFF,0x1107);
+	
+	TFT_Put_String(x_pos,y_pos+100,"VS_3 = ",15,classicConsole_16ptDescriptors,classicConsole_16ptBitmaps,3,1,0xFFFF);
+	TFT_DrawProgressBar(x_pos,y_pos+100+15,200,20,40,0xFFFF,0x1107);
+	
+	TFT_Put_String(x_pos,y_pos+150,"VS_4 = ",15,classicConsole_16ptDescriptors,classicConsole_16ptBitmaps,3,1,0xFFFF);
+	TFT_DrawProgressBar(x_pos,y_pos+150+15,200,20,50,0xFFFF,0x1107);
+	
+	TFT_Put_String(x_pos,y_pos+200,"VS_5 = ",15,classicConsole_16ptDescriptors,classicConsole_16ptBitmaps,3,1,0xFFFF);
+	TFT_DrawProgressBar(x_pos,y_pos+200+15,200,20,60,0xFFFF,0x1107);
+}
+

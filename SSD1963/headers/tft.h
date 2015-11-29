@@ -8,6 +8,12 @@
 #include <timers.h>
 #endif
 
+#ifndef PRIMITIVES_H
+#define PRIMITIVES_H
+#include <primitives.h>
+#endif
+
+
 #ifndef STM32F4XX_FSMC_H
 #define STM32F4XX_FSMC_H
 #include <stm32f4xx_fsmc.h>
